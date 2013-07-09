@@ -1,0 +1,9 @@
+[color]
+	ui = auto
+[user]
+	name = Zachary Dremann
+	email = dremann@gmail.com
+[alias]
+	co = checkout
+	br = branch
+	graph = log --graph --oneline
