@@ -14,3 +14,5 @@
 	assume = update-index --assume-unchanged
 	unassume = update-index --no-assume-unchanged
 	assumed = !git ls-files -v | awk ' { if(tolower($1) == $1) print $2 } '
+
+	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ =  \\2/' | sort
