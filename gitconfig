@@ -10,4 +10,7 @@
 	pull = pull --ff-only
 	lost = !"git fsck | awk '/dangling commit/ {print $3}' | git show --format='SHA1: %C(yellow)%h%Creset %f' --stdin | awk '/SHA1/ {sub(\"SHA1: \", \"\"); print}'"
 	cloneurl = config --get remote.origin.url
-	ignore = update-index --assume-unchanged
+
+	assume = update-index --assume-unchanged
+	unassume = update-index --no-assume-unchanged
+	assumed = !git ls-files -v | awk ' { if(tolower($1) == $1) print $2 } '
