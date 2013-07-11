@@ -117,6 +117,8 @@ alias l='ls -CF'                              #
 # Set editor to vim
 export EDITOR=/usr/bin/vim
 
+export TERM=$TERM-256color
+
 # Umask
 #
 # /etc/profile sets 022, removing write perms to group + others.
