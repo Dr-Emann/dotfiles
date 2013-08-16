@@ -1,9 +1,15 @@
+execute pathogen#infect()
 set nocompatible
 set backspace=indent,eol,start
 set backup
 set history=50
 set ruler
+
+" Colors
+colorscheme solarized
 set background=dark
+let g:solarized_visibility = "normal"
+
 set showcmd
 set incsearch
 syntax on
@@ -50,5 +56,6 @@ nnoremap JJJJ <Nop>
 
 map N Nzz
 map n nzz
+nmap <silent> <F5> :set list!<CR>
 
 filetype plugin indent on
