@@ -19,3 +19,4 @@
 [core]
 	autocrlf = input
 	whitespace = cr-at-eol
+	pager = less -F -X
