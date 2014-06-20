@@ -22,10 +22,10 @@ set backupdir=~/.vim/backup
 
 " Tab stuff:
 set smarttab
-set noexpandtab
-set shiftwidth=3
-set tabstop=3
-set softtabstop=3
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
 
 " Spellcheck
 if version >= 700
