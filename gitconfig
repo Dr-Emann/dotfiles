@@ -20,3 +20,5 @@
 	autocrlf = input
 	whitespace = cr-at-eol
 	pager = less -F -X
+[push]
+	default = simple
