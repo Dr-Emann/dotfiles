@@ -117,6 +117,8 @@ alias l='ls -CF'                              #
 # Set editor to vim
 export EDITOR=/usr/bin/vim
 
+eval `dircolors ~/.dircolors`
+
 # Umask
 #
 # /etc/profile sets 022, removing write perms to group + others.

@@ -1,18 +1,18 @@
 execute pathogen#infect()
 set nocompatible
 set backspace=indent,eol,start
-set backup
 set history=50
 set ruler
 
 " Colors
-colorscheme solarized
 set background=dark
+colorscheme solarized
 let g:solarized_visibility = "normal"
+let g:solarized_termtrans = 1
+syntax on
 
 set showcmd
 set incsearch
-syntax on
 set hlsearch
 set autoindent
 
@@ -21,7 +21,6 @@ set backup
 set backupdir=~/.vim/backup
 
 " Tab stuff:
-set smarttab
 set expandtab
 set shiftwidth=4
 set tabstop=4

@@ -82,6 +82,8 @@ fi
 
 export EDITOR='vim'
 
+eval `dircolors ~/.dircolors`
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 

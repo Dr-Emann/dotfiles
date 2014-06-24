@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc vim gitconfig tmux.conf minttyrc oh-my-zsh zshrc"    # list of files/folders to symlink in homedir
+files="bashrc dircolors vimrc vim gitconfig tmux.conf minttyrc oh-my-zsh zshrc"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -24,6 +24,10 @@ echo "done"
 
 git submodule init
 git submodule update
+
+$dir/gnome-terminal-colors-solarized/set_dark.sh
+
+ln $dir/dircolors-solarized/dircolors.ansi-dark $dir/dircolors
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
 for file in $files; do
