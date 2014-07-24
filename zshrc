@@ -28,6 +28,8 @@ alias ll='ls -l'                              # long list
 alias la='ls -A'                              # all but . and ..
 alias l='ls -CF'                              #
 
+alias tmux='tmux -2'
+
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="false"
 
