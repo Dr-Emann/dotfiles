@@ -18,7 +18,10 @@ set autoindent
 
 " Backups
 set backup
-set backupdir=~/.vim/backup
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+set writebackup
 
 " Tab stuff:
 set expandtab
