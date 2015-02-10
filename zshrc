@@ -13,22 +13,40 @@ ZSH_THEME="dremann"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias rm='rm -I'
 
-alias df='df -h'
-alias du='du -h'
+set_alias() {
+    local alias_name=$1
+    local real_prog=$2
+    local alias_args=
+    shift
+    shift
+    while [[ "$@" != "" ]]; do
+        if ( "$real_prog" --help 2>&1 | "grep" -q -- "${1%=*}" ); then
+            alias_args="$alias_args $1"
+        fi
+        shift
+    done
+    if [[ "$alias_args" != "" ]]; then
+        alias "$alias_name" "$real_prog $alias_args"
+    fi
+}
 
-alias grep='grep --color'
-alias egrep='egrep --color'
+# grep/egrep
+set_alias grep grep -q --color=auto
+set_alias egrep egrep -q --color=auto
 
-alias ls='ls -hF --color=tty'                 # classify files in colour
-alias dir='ls --color=auto --format=vertical'
-alias vdir='ls --color=auto --format=long'
-alias ll='ls -l'                              # long list
-alias la='ls -A'                              # all but . and ..
-alias l='ls -CF'                              #
+# rm
+set_alias rm rm -I
 
-alias tmux='tmux -2'
+set_alias df df -h
+set_alias du du -h
+
+set_alias ls ls -h -F --color=tty
+set_alias dir ls --format=vertical --color=auto
+set_alias vdir ls --format=long --color=auto
+set_alias ll ls -l
+set_alias la ls -A
+set_alias l ls -C -F
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="false"
@@ -85,7 +103,7 @@ fi
 
 export EDITOR='vim'
 
-eval `dircolors ~/.dircolors`
+eval `dircolors ~/.dircolors` > /dev/null 2>&1
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
