@@ -60,4 +60,6 @@ map N Nzz
 map n nzz
 nmap <silent> <F5> :set list!<CR>
 
+let g:vim_json_syntax_conceal = 0
+
 filetype plugin indent on
