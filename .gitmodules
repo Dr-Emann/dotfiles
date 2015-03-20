@@ -6,7 +6,7 @@
 	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "vim/bundle/rust.vim"]
 	path = vim/bundle/rust.vim
-	url = https://github.com/wting/rust.vim.git
+	url = https://github.com/rust-lang/rust.vim.git
 [submodule "dircolors-solarized"]
 	path = dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
