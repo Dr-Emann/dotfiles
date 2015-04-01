@@ -14,40 +14,26 @@ ZSH_THEME="dremann"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-set_alias() {
-    local alias_name=$1
-    local real_prog=$2
-    local alias_args=
-    shift
-    shift
-    while [[ "$@" != "" ]]; do
-        if ( "$real_prog" --help 2>&1 | "grep" -q -- "${1%=*}" ); then
-            alias_args="$alias_args $1"
-        fi
-        shift
-    done
-    if [[ "$alias_args" != "" ]]; then
-        alias "$alias_name"="$real_prog $alias_args"
-    fi
-}
+if [[ -z "$DREMANN_NO_ALIASES" ]]; then
+    # grep/egrep
+    alias grep="grep -q --color=auto"
+    alias egrep="egrep -q --color=auto"
 
-# grep/egrep
-set_alias grep grep -q --color=auto
-set_alias egrep egrep -q --color=auto
+    alias rm="rm -I"
 
-# rm
-set_alias rm rm -I
+    alias df="df -h"
+    alias du="du -h"
+    
+    # dir listings
+    alias ls="ls -h -F --color=auto"
+    alias dir="ls --format=vertical --color=auto"
+    alias vdir="ls --format=long --color=auto"
+    alias ll="ls -l"
+    alias la="ls -A"
+    alias l="ls -C -F"
 
-set_alias df df -h
-set_alias du du -h
-
-set_alias ls ls -h -F --color=tty
-set_alias dir ls --format=vertical --color=auto
-set_alias vdir ls --format=long --color=auto
-set_alias ll ls -l
-set_alias la ls -A
-set_alias l ls -C -F
-set_alias cp cp --reflink=auto
+    alias cp="cp --reflink=auto"
+fi
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="false"
