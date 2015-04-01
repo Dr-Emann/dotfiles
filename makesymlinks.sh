@@ -32,13 +32,15 @@ $dir/gnome-terminal-colors-solarized/set_dark.sh
 ln -s $dir/dircolors-solarized/dircolors.ansi-dark $dir/dircolors
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
+echo "Moving any existing dotfiles from ~ to $olddir"
 for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    if [ -e "$olddir/$file" ]; then
-        echo "$olddir/$file exists. It will be backed up to \`$olddir/$file.old\`. If this script is run again, it will be LOST"
-        mv "$olddir/$file" "$olddir/$file.old"
+    if [ -e "$HOME/.$file" ]; then
+        if [ -e "$olddir/$file" ]; then
+            echo "$olddir/$file exists. It will be backed up to \`$olddir/$file.old\`. If this script is run again, it will be LOST" 1>&2
+            mv "$olddir/$file" "$olddir/$file.old"
+        fi
+        mv "$HOME/.$file" "$olddir/$file"
     fi
-    mv "$HOME/.$file" "$olddir/$file"
     echo "Creating symlink to $file in home directory."
     ln -s "$dir/$file" "$HOME/.$file"
 done
