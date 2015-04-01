@@ -6,8 +6,8 @@
 
 ########## Variables
 
-dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
+dir=$HOME/dotfiles                    # dotfiles directory
+olddir=$HOME/dotfiles_old             # old dotfiles backup directory
 files="bashrc dircolors vimrc vim gitconfig tmux.conf minttyrc oh-my-zsh zshrc"    # list of files/folders to symlink in homedir
 
 ##########
@@ -38,13 +38,13 @@ for file in $files; do
         echo "$olddir/$file exists. It will be backed up to \`$olddir/$file.old\`. If this script is run again, it will be LOST"
         mv "$olddir/$file" "$olddir/$file.old"
     fi
-    mv "~/.$file" "$olddir/$file"
+    mv "$HOME/.$file" "$olddir/$file"
     echo "Creating symlink to $file in home directory."
-    ln -s "$dir/$file" "~/.$file"
+    ln -s "$dir/$file" "$HOME/.$file"
 done
 
 # make vim folders
-mkdir ~/.vim/backup
-mkdir ~/.vim/swap
-mkdir ~/.vim/undo
+mkdir $HOME/.vim/backup
+mkdir $HOME/.vim/swap
+mkdir $HOME/.vim/undo
 
