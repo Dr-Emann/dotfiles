@@ -27,7 +27,7 @@ set_alias() {
         shift
     done
     if [[ "$alias_args" != "" ]]; then
-        alias "$alias_name" "$real_prog $alias_args"
+        alias "$alias_name"="$real_prog $alias_args"
     fi
 }
 
@@ -47,6 +47,7 @@ set_alias vdir ls --format=long --color=auto
 set_alias ll ls -l
 set_alias la ls -A
 set_alias l ls -C -F
+set_alias cp cp --reflink=auto
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="false"
