@@ -21,5 +21,5 @@
 	url = https://github.com/tfnico/vim-gradle.git
 [submodule "vim/bundle/vim-json"]
 	path = vim/bundle/vim-json
-	url = git@github.com:elzr/vim-json.git
+	url = https://github.com/elzr/vim-json.git
 	branch = master
