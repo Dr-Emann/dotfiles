@@ -1,24 +1,31 @@
 [submodule "vim/bundle/vim-colors-solarized"]
 	path = vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
+	branch = master
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
+	branch = master
 [submodule "vim/bundle/rust.vim"]
 	path = vim/bundle/rust.vim
 	url = https://github.com/rust-lang/rust.vim.git
+	branch = master
 [submodule "dircolors-solarized"]
 	path = dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
+	branch = master
 [submodule "gnome-terminal-colors-solarized"]
 	path = gnome-terminal-colors-solarized
 	url = https://github.com/sigurdga/gnome-terminal-colors-solarized.git
+	branch = master
 [submodule "vim/bundle/vim-toml"]
 	path = vim/bundle/vim-toml
 	url = https://github.com/cespare/vim-toml.git
+	branch = master
 [submodule "vim/bundle/vim-gradle"]
 	path = vim/bundle/vim-gradle
 	url = https://github.com/tfnico/vim-gradle.git
+	branch = master
 [submodule "vim/bundle/vim-json"]
 	path = vim/bundle/vim-json
 	url = https://github.com/elzr/vim-json.git
