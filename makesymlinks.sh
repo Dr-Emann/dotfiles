@@ -46,7 +46,7 @@ for file in $files; do
 done
 
 # make vim folders
-mkdir "$HOME/.vim/backup"
-mkdir "$HOME/.vim/swap"
-mkdir "$HOME/.vim/undo"
+mkdir -p "$HOME/.vim/backup"
+mkdir -p "$HOME/.vim/swap"
+mkdir -p "$HOME/.vim/undo"
 
