@@ -22,3 +22,5 @@
 	pager = less -F -X
 [push]
 	default = simple
+[log]
+	abbrevCommit = true
