@@ -2,6 +2,17 @@
 ZSH_CUSTOM=$HOME/dotfiles/oh_my_zsh_custom
 ZSH=$HOME/.oh-my-zsh
 
+case "$OSTYPE" in
+    darwin*)
+        IS_OSX="true"
+        IS_UNIX_LIKE="true" ;;
+    linux-gnu)
+        IS_LINUX="true"
+        IS_UNIX_LIKE="true" ;;
+    cygin)
+        IS_WINDOWS="true" ;;
+esac
+
 autoload -U zmv
 
 # Set name of the theme to load.
@@ -19,7 +30,8 @@ if [[ -z "$DREMANN_NO_ALIASES" ]]; then
     alias grep="grep -q --color=auto"
     alias egrep="egrep -q --color=auto"
 
-    alias rm="rm -I"
+    [[ -z "$IS_OSX" ]] &&
+        alias rm="rm -I"
 
     alias df="df -h"
     alias du="du -h"
