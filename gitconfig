@@ -19,10 +19,12 @@
 
 	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ =  \\2/' | sort
 [core]
-	autocrlf = input
+	autocrlf = off
 	whitespace = cr-at-eol
 	pager = less -F -X
 [push]
 	default = simple
 [log]
 	abbrevCommit = true
+[diff]
+	algorithm = patience
