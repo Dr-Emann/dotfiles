@@ -30,3 +30,11 @@
 	path = vim/bundle/vim-json
 	url = https://github.com/elzr/vim-json.git
 	branch = master
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+	branch = master
+[submodule "vim/bundle/vim-fish"]
+	path = vim/bundle/vim-fish
+	url = https://github.com/dag/vim-fish.git
+	branch = master

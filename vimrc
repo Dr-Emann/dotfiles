@@ -1,3 +1,13 @@
+if &shell =~# 'fish$'
+    if executable("zsh")
+        set shell=zsh
+    elseif executable("bash")
+        set shell=bash
+    else
+        set shell=sh
+    endif
+endif
+
 execute pathogen#infect()
 set nocompatible
 set backspace=indent,eol,start
@@ -63,3 +73,12 @@ nmap <silent> <F5> :set list!<CR>
 let g:vim_json_syntax_conceal = 0
 
 filetype plugin indent on
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_wq = 0
