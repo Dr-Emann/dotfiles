@@ -2,6 +2,17 @@
 ZSH_CUSTOM=$HOME/dotfiles/oh_my_zsh_custom
 ZSH=$HOME/.oh-my-zsh
 
+case "$OSTYPE" in
+    darwin*)
+        IS_OSX="true"
+        IS_UNIX_LIKE="true" ;;
+    linux-gnu)
+        IS_LINUX="true"
+        IS_UNIX_LIKE="true" ;;
+    cygin)
+        IS_WINDOWS="true" ;;
+esac
+
 autoload -U zmv
 
 # Set name of the theme to load.
@@ -19,7 +30,8 @@ if [[ -z "$DREMANN_NO_ALIASES" ]]; then
     alias grep="grep -q --color=auto"
     alias egrep="egrep -q --color=auto"
 
-    alias rm="rm -I"
+    [[ -z "$IS_OSX" ]] &&
+        alias rm="rm -I"
 
     alias df="df -h"
     alias du="du -h"
@@ -69,7 +81,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git cargo)
+plugins=(git cargo zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 

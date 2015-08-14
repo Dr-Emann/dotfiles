@@ -38,3 +38,7 @@
 	path = vim/bundle/vim-fish
 	url = https://github.com/dag/vim-fish.git
 	branch = master
+[submodule "oh_my_zsh_custom/plugins/zsh-syntax-highlighting"]
+	path = oh_my_zsh_custom/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+    branch = master
