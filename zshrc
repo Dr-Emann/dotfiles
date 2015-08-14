@@ -100,6 +100,7 @@ else
     export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 fi
 
+LESS=-FXR
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
