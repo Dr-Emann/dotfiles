@@ -44,7 +44,8 @@ if [[ -z "$DREMANN_NO_ALIASES" ]]; then
     alias la="ls -A"
     alias l="ls -C -F"
 
-    alias cp="cp --reflink=auto"
+    [[ -n "$IS_LINUX" ]] &&
+        alias cp="cp --reflink=auto"
 fi
 
 # Set to this to use case-sensitive completion
