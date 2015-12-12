@@ -82,7 +82,12 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git cargo zsh-syntax-highlighting)
+plugins=(wd cargo)
+if [ -n "$IS_WINDOWS" ]; then
+    plugins+=(gitfast)
+else
+    plugins+=(git zsh-syntax-highlighting)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
