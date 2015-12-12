@@ -122,3 +122,7 @@ LESS=-FXR
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 unsetopt sharehistory
+
+if [ -f ~/.zshrc.local ]; then
+    source ~/.zshrc.local
+fi
