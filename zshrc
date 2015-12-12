@@ -86,11 +86,15 @@ plugins=(git cargo zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+export PATH="/usr/local/bin:$PATH"
+
+if [ -d "$HOME/.multirust/toolchains/stable/cargo/bin" ]; then
+    export PATH="$HOME/.multirust/toolchains/stable/cargo/bin:$PATH"
+fi
+
 # User configuration
 if [ -d "$HOME/bin" ] ; then
-	export PATH=$HOME/bin:/usr/local/bin:$PATH
-else
-	export PATH=/usr/local/bin:$PATH
+	export PATH="$HOME/bin:$PATH"
 fi
 # export MANPATH="/usr/local/man:$MANPATH"
 
