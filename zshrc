@@ -9,7 +9,7 @@ case "$OSTYPE" in
     linux-gnu)
         IS_LINUX="true"
         IS_UNIX_LIKE="true" ;;
-    cygin)
+    cygwin)
         IS_WINDOWS="true" ;;
 esac
 
