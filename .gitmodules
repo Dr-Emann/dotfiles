@@ -42,3 +42,6 @@
 	path = oh_my_zsh_custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
     branch = master
+[submodule "oh_my_zsh_custom/plugins/rust"]
+	path = oh_my_zsh_custom/plugins/rust
+	url = https://github.com/rust-lang/zsh-config.git
