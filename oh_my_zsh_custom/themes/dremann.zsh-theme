@@ -20,7 +20,7 @@ if [[ $EUID -ne 0 ]] ; then
 	ROOT_ICON=""
 fi
 
-PROMPT='%{$ROOT_ICON_COLOR%}$ROOT_ICON%{$reset_color%}%{$MACHINE_NAME_COLOR%}%m➜  %{$reset_color%}%(?.%{$PROMPT_SUCCESS_COLOR%}.%{$PROMPT_FAILURE_COLOR%})%~%{$reset_color%}'
+PROMPT='%{$ROOT_ICON_COLOR%}$ROOT_ICON%{$reset_color%}%{$MACHINE_NAME_COLOR%}%n@%m➜  %{$reset_color%}%(?.%{$PROMPT_SUCCESS_COLOR%}.%{$PROMPT_FAILURE_COLOR%})%~%{$reset_color%}'
 
 # Don't use git prompt for cygwin, since it's so slow.
 if [[ $(uname -s) != CYGWIN* ]] ; then
