@@ -8,7 +8,14 @@ if &shell =~# 'fish$'
     endif
 endif
 
+" Tab stuff:
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+
 execute pathogen#infect()
+
 set nocompatible
 set backspace=indent,eol,start
 set history=50
@@ -33,11 +40,6 @@ set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 set writebackup
 
-" Tab stuff:
-set expandtab
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
 
 " Spellcheck
 if version >= 700
