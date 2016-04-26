@@ -74,6 +74,29 @@ nmap <silent> <F5> :set list!<CR>
 
 vnoremap <expr>y "my\"" . v:register . "y`y"
 
+function! ToggleMovement(firstOp, thenOp)
+  let pos = getpos('.')
+  execute "normal! " . a:firstOp
+  if pos == getpos('.')
+    execute "normal! " . a:thenOp
+  endif
+endfunction
+
+" The original carat 0 swap
+nnoremap <silent> 0 :call ToggleMovement('^', '0')<CR>
+
+" How about ; and ,
+nnoremap <silent> ; :call ToggleMovement(';', ',')<CR>
+nnoremap <silent> , :call ToggleMovement(',', ';')<CR>
+
+" How about H and L
+nnoremap <silent> H :call ToggleMovement('H', 'L')<CR>
+nnoremap <silent> L :call ToggleMovement('L', 'H')<CR>
+
+" How about G and gg
+nnoremap <silent> G :call ToggleMovement('G', 'gg')<CR>
+nnoremap <silent> gg :call ToggleMovement('gg', 'G')<CR>
+
 let g:vim_json_syntax_conceal = 0
 
 filetype plugin indent on
