@@ -28,3 +28,7 @@
 	abbrevCommit = true
 [diff]
 	algorithm = patience
+[diff "to-utf8"]
+    textconv = "iconv -f $(file -b --mime-encoding \"$1\") -t utf-8"
+[svn]
+    rmdir = true
