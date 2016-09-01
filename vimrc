@@ -29,8 +29,6 @@ let g:solarized_termtrans = 1
 syntax on
 
 set showcmd
-set incsearch
-set hlsearch
 set autoindent
 
 " Backups
@@ -65,37 +63,13 @@ set wildmode=list:longest,full
 set mouse=a
 set number
 
-inoremap jj <Esc>
 nnoremap JJJJ <Nop>
 
 map N Nzz
 map n nzz
-nmap <silent> <F5> :set list!<CR>
+nnoremap <silent> <F5> :set list!<CR>
 
 vnoremap <expr>y "my\"" . v:register . "y`y"
-
-function! ToggleMovement(firstOp, thenOp)
-  let pos = getpos('.')
-  execute "normal! " . a:firstOp
-  if pos == getpos('.')
-    execute "normal! " . a:thenOp
-  endif
-endfunction
-
-" The original carat 0 swap
-nnoremap <silent> 0 :call ToggleMovement('^', '0')<CR>
-
-" How about ; and ,
-nnoremap <silent> ; :call ToggleMovement(';', ',')<CR>
-nnoremap <silent> , :call ToggleMovement(',', ';')<CR>
-
-" How about H and L
-nnoremap <silent> H :call ToggleMovement('H', 'L')<CR>
-nnoremap <silent> L :call ToggleMovement('L', 'H')<CR>
-
-" How about G and gg
-nnoremap <silent> G :call ToggleMovement('G', 'gg')<CR>
-nnoremap <silent> gg :call ToggleMovement('gg', 'G')<CR>
 
 let g:vim_json_syntax_conceal = 0
 
@@ -109,3 +83,13 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
+
+" My custom things
+inoremap jk <Esc>
+inoremap <esc> <nop>
+let mapleader = "\<space>"
+nnoremap <leader>vs :source $MYVIMRC<cr>
+nnoremap <leader>w :w<cr>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>" viw<esc>a"<esc>hBi"<esc>lel
+nnoremap <leader>$ viw<esc>a}<esc>hbi{<esc>lel
