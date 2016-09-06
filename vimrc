@@ -86,10 +86,11 @@ let g:syntastic_check_on_wq = 0
 
 " My custom things
 inoremap jk <Esc>
-inoremap <esc> <nop>
 let mapleader = "\<space>"
+nnoremap OO O<cr><up>
+nnoremap <leader>ve :split $MYVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
-nnoremap <leader>w :w<cr>
-nnoremap <leader>q :q<cr>
+nnoremap <leader>fw :w<cr>
 nnoremap <leader>" viw<esc>a"<esc>hBi"<esc>lel
 nnoremap <leader>$ viw<esc>a}<esc>hbi{<esc>lel
+nnoremap <leader>w <c-w>
