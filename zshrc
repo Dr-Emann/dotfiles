@@ -82,7 +82,10 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(wd cargo)
+plugins=(wd cargo screen docker docker-compose)
+if [ -n "$IS_OSX" ]; then
+    plugins+=(brew osx)
+fi
 if [ -n "$IS_WINDOWS" ]; then
     plugins+=(gitfast)
 else
