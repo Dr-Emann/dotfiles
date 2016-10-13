@@ -90,7 +90,10 @@ let mapleader = "\<space>"
 nnoremap OO O<cr><up>
 nnoremap <leader>ve :split $MYVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
+nnoremap <leader>q :quit<cr>
 nnoremap <leader>fw :w<cr>
-nnoremap <leader>" viw<esc>a"<esc>hBi"<esc>lel
-nnoremap <leader>$ viw<esc>a}<esc>hbi{<esc>lel
+nnoremap <leader>" viW<esc>a"<esc>hBi"<esc>lel
+nnoremap <leader>$ viW<esc>a}<esc>hBi{<esc>lel
 nnoremap <leader>w <c-w>
+nnoremap <leader>tl :tabnext<cr>
+nnoremap <leader>th :tabprevious<cr>
