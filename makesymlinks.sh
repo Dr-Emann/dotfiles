@@ -6,43 +6,57 @@
 
 ########## Variables
 
-dir="$HOME/dotfiles"                    # dotfiles directory
-olddir="$HOME/dotfiles_old"             # old dotfiles backup directory
-files="bashrc dircolors vimrc vim gitconfig tmux.conf minttyrc oh-my-zsh zshrc"    # list of files/folders to symlink in homedir
+dir="$(dirname "$0")"     # dotfiles directory
+olddir="${dir}_old"       # old dotfiles backup directory
+
+# list of files/folders to symlink in homedir
+files=(
+    bashrc
+    vimrc
+    vim
+    gitconfig
+    tmux.conf
+    minttyrc
+    oh-my-zsh
+    zshrc
+    zsh-dircolors.config
+)
 
 ##########
 
 if ! [ -d "$olddir" ]; then
     # create dotfiles_old in homedir
     echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
-    mkdir -p "$olddir"
+    mkdir -p "$olddir" || exit $?
     echo "done"
 fi
 
 # change to the dotfiles directory
 echo -n "Changing to the $dir directory ..."
-cd "$dir"
+cd "$dir" || exit $?
 echo "done"
 
-git submodule init
-git submodule update
+git submodule update --init --recursive
 
-"$dir/gnome-terminal-colors-solarized/set_dark.sh"
-
-ln -s "$dir/dircolors-solarized/dircolors.ansi-dark" "$dir/dircolors"
+if type gnome-terminal &>/dev/null; then
+    "$dir/gnome-terminal-colors-solarized/set_dark.sh"
+fi
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
 echo "Moving any existing dotfiles from ~ to $olddir"
-for file in $files; do
-    if [ -e "$HOME/.$file" ]; then
+for file in "${files[@]}"; do
+    # If file isn't already a link to the right place
+    if [ "$(readlink "$HOME/.$file")" != "$dir/$file" ]; then
         if [ -e "$olddir/$file" ]; then
-            echo "$olddir/$file exists. It will be backed up to \`$olddir/$file.old\`. If this script is run again, it will be LOST" 1>&2
-            mv "$olddir/$file" "$olddir/$file.old"
+            echo "$olddir/$file exists. It will be backed up to '$olddir/$file.old'. If this script is run again, it will be LOST" 1>&2
+            mv -f "$olddir/$file" "$olddir/$file.old"
         fi
-        mv "$HOME/.$file" "$olddir/$file"
+        mv -f "$HOME/.$file" "$olddir/$file" || exit $?
+        echo "Creating symlink to $file in home directory."
+        ln -s "$dir/$file" "$HOME/.$file"
+    else
+        echo "Symlink exists for $file."
     fi
-    echo "Creating symlink to $file in home directory."
-    ln -s "$dir/$file" "$HOME/.$file"
 done
 
 # make vim folders

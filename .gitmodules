@@ -51,3 +51,7 @@
 [submodule "vim/bundle/vim-ps1"]
 	path = vim/bundle/vim-ps1
 	url = https://github.com/PProvost/vim-ps1.git
+[submodule "oh_my_zsh_custom/plugins/zsh-dircolors-solarized"]
+	path = oh_my_zsh_custom/plugins/zsh-dircolors-solarized
+	url = https://github.com/joel-porquet/zsh-dircolors-solarized.git
+	branch = master
