@@ -6,12 +6,13 @@
 
 ########## Variables
 
-dir="$(dirname "$0")"     # dotfiles directory
-olddir="${dir}_old"       # old dotfiles backup directory
+dir="$(readlink -f "$(dirname "$0")")"     # dotfiles directory
+olddir="${dir}_old"                        # old dotfiles backup directory
 
 # list of files/folders to symlink in homedir
 files=(
     bashrc
+    dircolors
     vimrc
     vim
     gitconfig
@@ -38,6 +39,8 @@ echo "done"
 
 git submodule update --init --recursive
 
+ln -sf "oh_my_zsh_custom/plugins/zsh-dircolors-solarized/dircolors-solarized/$(cat zsh-dircolors.config)" "dircolors"
+
 if type gnome-terminal &>/dev/null; then
     "$dir/gnome-terminal-colors-solarized/set_dark.sh"
 fi
@@ -47,13 +50,15 @@ echo "Moving any existing dotfiles from ~ to $olddir"
 for file in "${files[@]}"; do
     # If file isn't already a link to the right place
     if [ "$(readlink "$HOME/.$file")" != "$dir/$file" ]; then
-        if [ -e "$olddir/$file" ]; then
-            echo "$olddir/$file exists. It will be backed up to '$olddir/$file.old'. If this script is run again, it will be LOST" 1>&2
-            mv -f "$olddir/$file" "$olddir/$file.old"
+        if [ -e "$HOME/.$file" ]; then
+            if [ -e "$olddir/$file" ]; then
+                echo "$olddir/$file exists. It will be backed up to '$olddir/$file.old'. If this script is run again, it will be LOST" 1>&2
+                mv -f "$olddir/$file" "$olddir/$file.old"
+            fi
+            mv -f "$HOME/.$file" "$olddir/$file" || exit $?
         fi
-        mv -f "$HOME/.$file" "$olddir/$file" || exit $?
         echo "Creating symlink to $file in home directory."
-        ln -s "$dir/$file" "$HOME/.$file"
+        ln -sf "$dir/$file" "$HOME/.$file"
     else
         echo "Symlink exists for $file."
     fi
