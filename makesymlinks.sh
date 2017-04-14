@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 ############################
 # .make.sh
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
@@ -6,7 +7,7 @@
 
 ########## Variables
 
-dir="$(readlink -f "$(dirname "$0")")"     # dotfiles directory
+dir="$(cd "$(dirname "$0")" && pwd -P)"    # dotfiles directory
 olddir="${dir}_old"                        # old dotfiles backup directory
 
 # list of files/folders to symlink in homedir
