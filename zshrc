@@ -37,9 +37,11 @@ if [[ -z "$DREMANN_NO_ALIASES" ]]; then
     alias du="du -h"
     
     # dir listings
-    alias ls="ls -h -F --color=auto"
-    alias dir="ls --format=vertical --color=auto"
-    alias vdir="ls --format=long --color=auto"
+    if [ -z "$IS_OSX" ]; then
+        alias ls="ls -h -F --color=auto"
+        alias dir="ls --format=vertical --color=auto"
+        alias vdir="ls --format=long --color=auto"
+    fi
     alias ll="ls -l"
     alias la="ls -A"
     alias l="ls -C -F"
@@ -82,9 +84,11 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(wd cargo screen docker docker-compose zsh-dircolors-solarized)
+plugins=(wd cargo screen docker docker-compose)
 if [ -n "$IS_OSX" ]; then
     plugins+=(brew osx)
+else
+    plugins+=(zsh-dircolors-solarized)
 fi
 if [ -n "$IS_WINDOWS" ]; then
     plugins+=(gitfast)
