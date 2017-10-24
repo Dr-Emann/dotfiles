@@ -6,10 +6,10 @@ case "$OSTYPE" in
     darwin*)
         IS_OSX="true"
         IS_UNIX_LIKE="true" ;;
-    linux-gnu)
+    linux*)
         IS_LINUX="true"
         IS_UNIX_LIKE="true" ;;
-    cygwin)
+    cygwin*)
         IS_WINDOWS="true" ;;
 esac
 
@@ -90,10 +90,15 @@ if [ -n "$IS_OSX" ]; then
 else
     plugins+=(zsh-dircolors-solarized)
 fi
-if [ -n "$IS_WINDOWS" ]; then
-    plugins+=(gitfast)
-else
+if [ -n "$IS_UNIX_LIKE" ]; then
     plugins+=(git zsh-syntax-highlighting)
+else
+    plugins+=(gitfast)
+fi
+
+# Don't use git prompt for cygwin, since it's so slow.
+if [ -n "$IS_WINDOWS" ] || grep -qi 'microsoft' /proc/version; then
+    export PROMPT_NOGIT=1
 fi
 
 source $ZSH/oh-my-zsh.sh

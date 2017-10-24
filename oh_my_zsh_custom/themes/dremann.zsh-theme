@@ -20,12 +20,26 @@ if [[ $EUID -ne 0 ]] ; then
 	ROOT_ICON=""
 fi
 
+function output_git_prompt() {
+    if [[ "$PROMPT_NOGIT" == "1" ]]; then
+        return
+    fi
+    if [ -n "$GIT_SLOW_DIRS" ]; then
+        IFS=':'
+        local dir
+        for dir in $GIT_SLOW_DIRS; do
+            if [[ "$PWD/" == "$dir/"* ]]; then
+                return
+            fi
+        done
+        unset IFS
+    fi
+    printf '%s' "$GIT_PROMPT_INFO$(git_prompt_info)$GIT_DIRTY_COLOR$(git_prompt_status)$reset_color"
+}
+
 PROMPT='%{$ROOT_ICON_COLOR%}$ROOT_ICON%{$reset_color%}%{$MACHINE_NAME_COLOR%}%n@%m➜  %{$reset_color%}%(?.%{$PROMPT_SUCCESS_COLOR%}.%{$PROMPT_FAILURE_COLOR%})%~%{$reset_color%}'
 
-# Don't use git prompt for cygwin, since it's so slow.
-if [[ $(uname -s) != CYGWIN* ]] && ! grep -qi 'microsoft' /proc/version; then
-    PROMPT=$PROMPT'%{$GIT_PROMPT_INFO%}$(git_prompt_info)%{$GIT_DIRTY_COLOR%}$(git_prompt_status) %{$reset_color%}'
-fi
+PROMPT=$PROMPT'$(output_git_prompt)'
 
 PROMPT=$PROMPT'
 %{$PROMPT_PROMPT%}ᐅ %{$reset_color%} '
