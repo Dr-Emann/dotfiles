@@ -3,6 +3,7 @@
 [user]
 	name = Zachary Dremann
 	email = dremann@gmail.com
+	signingkey = 7F1B5AC6
 [alias]
 	co = checkout
 	br = branch
@@ -32,3 +33,5 @@
     textconv = "iconv -f $(file -b --mime-encoding \"$1\") -t utf-8"
 [svn]
     rmdir = true
+[commit]
+	gpgsign = true
