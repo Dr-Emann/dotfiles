@@ -143,6 +143,8 @@ LESS=-FXR
 
 unsetopt sharehistory
 
+export GPG_TTY=$(tty)
+
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
