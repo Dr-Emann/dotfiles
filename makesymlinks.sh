@@ -14,14 +14,15 @@ olddir="${dir}_old"                        # old dotfiles backup directory
 files=(
     bashrc
     dircolors
-    vimrc
-    vim
     gitconfig
-    tmux.conf
+    ideavimrc
     minttyrc
     oh-my-zsh
-    zshrc
+    tmux.conf
+    vim
+    vimrc
     zsh-dircolors.config
+    zshrc
 )
 
 ##########
