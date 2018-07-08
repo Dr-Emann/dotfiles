@@ -97,7 +97,7 @@ else
 fi
 
 # Don't use git prompt for cygwin, since it's so slow.
-if [ -n "$IS_WINDOWS" ] || grep -qi 'microsoft' /proc/version; then
+if [ -n "$IS_WINDOWS" ] || grep -qi 'microsoft' /proc/version 2>/dev/null; then
     export PROMPT_NOGIT=1
 fi
 
