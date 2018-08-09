@@ -1,5 +1,5 @@
 BoldAsFont=no
-Transparency=low
+Transparency=off
 CursorType=block
 OpaqueWhenFocused=yes
 Term=xterm-256color
