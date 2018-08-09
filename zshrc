@@ -84,7 +84,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(wd cargo screen docker docker-compose rust rustup cargo)
+plugins=(wd cargo screen docker docker-compose rust rustup cargo vi-mode)
 if [ -n "$IS_OSX" ]; then
     plugins+=(brew osx)
 else
@@ -97,7 +97,7 @@ else
 fi
 
 # Don't use git prompt for cygwin, since it's so slow.
-if [ -n "$IS_WINDOWS" ] || grep -qi 'microsoft' /proc/version 2>/dev/null; then
+if [ -n "$IS_WINDOWS" ] || grep -qi 'microsoft' /proc/version &>/dev/null; then
     export PROMPT_NOGIT=1
 fi
 
@@ -148,3 +148,11 @@ export GPG_TTY=$(tty)
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
+
+bindkey "^[OA" up-line-or-beginning-search
+bindkey "^[OB" down-line-or-beginning-search
+bindkey -M vicmd "k" up-line-or-beginning-search
+bindkey -M vicmd "j" down-line-or-beginning-search
+
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
