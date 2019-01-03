@@ -47,6 +47,8 @@ endif
 
 " Keep 8 lines of context when possible
 set scrolloff=8
+" Keep 5 characters to the right/left when horizontal scrolling
+set sidescrolloff=5
 
 " searching
 set showmatch
