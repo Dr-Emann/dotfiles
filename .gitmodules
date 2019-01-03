@@ -55,3 +55,6 @@
 	path = oh_my_zsh_custom/plugins/zsh-dircolors-solarized
 	url = https://github.com/joel-porquet/zsh-dircolors-solarized.git
 	branch = master
+[submodule "vim/bundle/vim-flatbuffers"]
+	path = vim/bundle/vim-flatbuffers
+	url = https://github.com/zchee/vim-flatbuffers.git
