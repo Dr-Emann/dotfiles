@@ -63,12 +63,18 @@ set wildmenu
 set wildmode=list:longest,full
 
 set mouse=a
-set number
+set number relativenumber
+
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
 
 nnoremap JJJJ <Nop>
 
-map N Nzz
-map n nzz
+noremap N Nzz
+noremap n nzz
 nnoremap <silent> <F5> :set list!<CR>
 
 vnoremap <expr>y "my\"" . v:register . "y`y"
