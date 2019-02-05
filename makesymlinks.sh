@@ -67,7 +67,7 @@ for file in "${files[@]}"; do
 done
 
 # make vim folders
-mkdir -p "$HOME/.vim/backup"
-mkdir -p "$HOME/.vim/swap"
-mkdir -p "$HOME/.vim/undo"
+mkdir -p "$HOME/.vimextra/backup"
+mkdir -p "$HOME/.vimextra/swap"
+mkdir -p "$HOME/.vimextra/undo"
 

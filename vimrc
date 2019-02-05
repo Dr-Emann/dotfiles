@@ -33,9 +33,9 @@ set autoindent
 
 " Backups
 set backup
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
+set backupdir=~/.vimextra/backup//
+set directory=~/.vimextra/swap//
+set undodir=~/.vimextra/undo//
 set writebackup
 
 
