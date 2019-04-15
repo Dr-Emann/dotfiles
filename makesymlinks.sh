@@ -39,7 +39,14 @@ echo -n "Changing to the $dir directory ..."
 cd "$dir" || exit $?
 echo "done"
 
-git submodule update --init --recursive
+if command -v git >/dev/null 2>&1; then
+    git submodule update --init --recursive
+else
+    if ! [ -f oh-my-zsh/oh-my-zsh.sh ]; then
+        echo "No git found, and git submodules don't appear to exist" >&2
+        exit 1
+    fi
+fi
 
 ln -sf "oh_my_zsh_custom/plugins/zsh-dircolors-solarized/dircolors-solarized/$(cat zsh-dircolors.config)" "dircolors"
 
