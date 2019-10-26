@@ -105,8 +105,8 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="/usr/local/bin:$PATH"
 
-if [ -d "$HOME/.multirust/toolchains/stable/cargo/bin" ]; then
-    export PATH="$HOME/.multirust/toolchains/stable/cargo/bin:$PATH"
+if [ -d "$HOME/.cargo/bin" ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 # User configuration
