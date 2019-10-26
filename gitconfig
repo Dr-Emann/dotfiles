@@ -34,4 +34,4 @@
 [svn]
     rmdir = true
 [commit]
-	gpgsign = true
+	gpgsign = false
