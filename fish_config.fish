@@ -55,3 +55,6 @@ if not functions -q wd
     fisher add fischerling/plugin-wd
 end
 
+if command -sq ssh-agent
+    eval (ssh-agent -c) >/dev/null 2>&1
+end
